@@ -5,10 +5,10 @@ var vel
 var capncrunch = Vector3()
 var speed = 5
 var jump_strength = 2
-var is_on_ground = false
-var Player_before_jump_pos
 var gravity = 5
 export var Y_lvl = 1
+
+const bulletPath = preload("res://Bullet.tscn"	)
 
 #func cartesian_to_isometric(cartesian):
 #	var screen_pos = Vector2()
@@ -18,6 +18,14 @@ export var Y_lvl = 1
 
 func _process(delta):
 	$Control/Label.text = str(vel)
+	
+func shoot():
+	var bullet = bulletPath.instance()
+	
+	get_parent().add_child(bullet)
+	bullet.global_transform.origin = global_transform.origin
+	print("shoot xD")
+	pass
 
 func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
@@ -31,6 +39,8 @@ func _physics_process(delta):
 		dir.z += 1
 	else: dir.z = 0
 	
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 	
 	
 	if not is_on_floor():
@@ -47,5 +57,3 @@ func _physics_process(delta):
 	dir = dir.normalized()
 	vel = dir * speed
 	move_and_slide(vel, Vector3.UP)
-	
-	print(vel, ", ", Player_before_jump_pos, ", dir:", dir, ", IOG: ", is_on_ground)
