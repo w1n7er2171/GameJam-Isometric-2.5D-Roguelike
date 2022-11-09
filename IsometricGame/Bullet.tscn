@@ -7,12 +7,14 @@
 height = 0.002
 
 [node name="KinematicBody" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+transform = Transform( 0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0 )
+transform = Transform( 0.353553, -0.25, 0.25, 0, 0.353553, 0.353553, -0.353553, -0.25, 0.25, 0, 0, 0 )
 texture = ExtResource( 1 )
